@@ -1,0 +1,520 @@
+:root {
+    --uw-sidebar-width: 252px;
+    --uw-sidebar-collapsed-width: 58px;
+}
+
+/* Nullify host layout and custom properties */
+d2l-labs-navigation-band,
+d2l-navigation-band,
+[slot="band"],
+slot[name="band"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0px !important;
+    max-height: 0px !important;
+    min-height: 0px !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    --d2l-branding-primary-color: transparent !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    pointer-events: none !important;
+}
+
+/* Collapse any parent slot wrappers */
+d2l-navigation [slot="band"],
+.d2l-navigation-s-band {
+    display: none !important;
+    height: 0 !important;
+}
+
+/* Hide strictly the Waterloo LEARN logo in the top navbar */
+.d2l-navigation-s-logo,
+.d2l-navigation-s-logo-wrapper,
+.d2l-navigation-header-left>d2l-navigation-link-image:not(.uw-cloned-logo),
+d2l-page-header-seperator {
+    display: none !important;
+}
+
+/* Preserve & restore right-side icons and their dividers */
+.d2l-navigation-header-right d2l-navigation-separator,
+.d2l-navigation-header-right [class*="separator"],
+.d2l-navigation-header-right d2l-navigation-link-image,
+.d2l-navigation-s-personal-tools d2l-navigation-separator {
+    display: inline-flex !important;
+    visibility: visible !important;
+    width: auto !important;
+    opacity: 1 !important;
+}
+
+/* Ensure the active course title remains visible in the header */
+.d2l-navigation-s-title-container,
+.d2l-navigation-s-header-title,
+.d2l-navigation-s-header a[title],
+.d2l-navigation-s-header span,
+d2l-navigation-link-highlight {
+    display: inline-flex !important;
+    visibility: visible !important;
+    font-weight: 500 !important;
+    color: #1f2937 !important;
+}
+
+/* Completely remove the course banner shell, image, and background gradient */
+d2l-course-image-banner,
+d2l-course-banner,
+.d2l-course-banner-container,
+.d2l-course-banner,
+.d2l-navigation-s-course-banner,
+.d2l-navigation-s-course-banner-container,
+[class*="course-banner"],
+div:has(> .d2l-course-banner),
+[data-learn-hidden-widget="true"] {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: none !important;
+    overflow: hidden !important;
+}
+
+/* ========================================================
+     2. DOCKED LEFT SIDEBAR & PAGE CONTENT OFFSET
+     ======================================================== */
+
+#uw-learn-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: var(--uw-sidebar-width) !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    background-color: #ffffff !important;
+    border-right: 1px solid #e5e7eb !important;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.05) !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+}
+
+#uw-learn-sidebar *,
+#uw-learn-sidebar *::before,
+#uw-learn-sidebar *::after {
+    box-sizing: border-box !important;
+}
+
+.d2l-labs-navigation-header-left d2l-page-header-separator{
+    display: none !important;
+}
+
+/* Collapsed Mini-Mode */
+#uw-learn-sidebar.collapsed {
+    width: var(--uw-sidebar-collapsed-width) !important;
+}
+
+#uw-learn-sidebar.collapsed .uw-brand-logo-text,
+#uw-learn-sidebar.collapsed .uw-cloned-logo,
+#uw-learn-sidebar.collapsed .uw-faculty-divider,
+#uw-learn-sidebar.collapsed .uw-course-btn-text .uw-course-subtext,
+#uw-learn-sidebar.collapsed .uw-course-chevron,
+#uw-learn-sidebar.collapsed .uw-quicknav-tray,
+#uw-learn-sidebar.collapsed .uw-community-section span:first-child,
+#uw-learn-sidebar.collapsed .uw-toggle-icon {
+    display: none !important;
+}
+
+#uw-learn-sidebar.collapsed .uw-sidebar-brand {
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+#uw-learn-sidebar.collapsed .uw-course-btn-text {
+    padding-right: 0 !important;
+    text-align: center !important;
+}
+
+#uw-learn-sidebar.collapsed .uw-course-title {
+    font-size: 11px !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* ========================================================
+     3. BRAND HEADER & TOGGLE
+     ======================================================== */
+
+.uw-sidebar-brand {
+    height: 5.05rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 14px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background-color: #ffffff !important;
+    flex-shrink: 0 !important;
+}
+
+.uw-brand-link {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    overflow: hidden !important;
+}
+
+.uw-cloned-logo {
+    display: block !important;
+    max-height: 38px !important;
+    width: auto !important;
+    cursor: pointer !important;
+}
+
+.uw-brand-logo-text {
+    display: flex !important;
+    flex-direction: column !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 900 !important;
+    color: #000000 !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.01em !important;
+    user-select: none !important;
+}
+
+.uw-logo-word-top {
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+}
+
+.uw-logo-word-bot {
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.uw-collapse-toggle {
+    background: transparent !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    color: #64748b !important;
+    width: 26px !important;
+    height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 11px !important;
+    transition: all 0.15s ease !important;
+}
+
+.uw-collapse-toggle:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* ========================================================
+     4. SCROLL AREA, SECTIONS & ACCORDION ROWS
+     ======================================================== */
+
+.uw-sidebar-scroll {
+    overflow-y: auto !important;
+    flex: 1 !important;
+}
+
+.uw-faculty-divider {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #94a3b8 !important;
+    padding: 10px 14px 4px 14px !important;
+}
+
+/* Container for course row + collapsible tray */
+.uw-course-accordion-item {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+/* Header button row */
+.uw-course-accordion-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 14px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.uw-course-accordion-btn:hover {
+    background-color: #f1f5f9 !important;
+}
+
+.uw-course-btn-text {
+    flex: 1 !important;
+    overflow: hidden !important;
+    padding-right: 6px !important;
+}
+
+.uw-course-title {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: #0284c7 !important;
+    line-height: 1.25 !important;
+}
+
+/* Chevron arrow rotation */
+.uw-course-chevron {
+    display: inline-block !important;
+    font-size: 14px !important;
+    color: #64748b !important;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transform-origin: center !important;
+}
+
+/* Hover-triggered quick-navigation tray */
+/* --- THE TRAY ANIMATION --- */
+.uw-quicknav-tray {
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    background-color: #f8fafc !important;
+    /* Smooth, gentle expansion and collapse */
+    transition: 
+      max-height 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 0.25s ease-in-out !important;
+  }
+
+/* Expand smoothly on hover OR when active class is present */
+.uw-course-accordion-item:hover .uw-quicknav-tray,
+.uw-course-accordion-item.is-open .uw-quicknav-tray {
+  max-height: 260px !important; /* Plenty of room for all 6 links */
+  opacity: 1 !important;
+}
+
+.uw-course-accordion-item:hover .uw-course-accordion-btn {
+    background-color: #f0f9ff !important;
+}
+
+/* Rotates chevron smoothly down on hover or when open */
+.uw-course-accordion-item:hover .uw-course-chevron,
+.uw-course-accordion-item.is-open .uw-course-chevron {
+  transform: rotate(90deg) !important;
+  color: #0284c7 !important;
+}
+
+/* Links inside the tray */
+.uw-quicknav-tray a {
+    display: block !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: #151515 !important;
+    text-decoration: none !important;
+    transition: background-color 0.12s ease, color 0.12s ease !important;
+}
+
+.uw-quicknav-tray a:hover {
+    background-color: #ddecff !important;
+    color: #0369a1 !important;
+    text-decoration: underline !important;
+    font-weight: 600 !important;
+}
+
+/* ========================================================
+     5. COMMUNITIES SECTION
+     ======================================================== */
+
+.uw-community-section {
+    border-top: 1px solid #e2e8f0 !important;
+    margin-top: 8px !important;
+}
+
+.uw-collapsible-toggle {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px 14px !important;
+    background: #f8fafc !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: #64748b !important;
+    text-transform: uppercase !important;
+}
+
+.uw-community-item {
+    display: block !important;
+    padding: 7px 14px !important;
+    font-size: 11.5px !important;
+    color: #475569 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #f8fafc !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.uw-community-item:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* ========================================================
+   COMPACT HOMEPAGE LAYOUT & WIDGET SPACING
+   ======================================================== */
+
+/* 1. Tighten the central layout container & column gap */
+.d2l-homepage,
+.d2l-page-main,
+.d2l-widget-layout-column-container {
+  padding-top: 10px !important;
+  margin-top: 0 !important;
+  gap: 14px !important; /* Reduces gap between left & right widget columns */
+}
+
+.d2l-widget-layout-column-container > * {
+  margin-bottom: 12px !important;
+}
+
+.homepage-col-4 {
+    width: 30% !important;
+    max-width: 30% !important;
+    margin: 0 !important;
+}
+
+.homepage-col-8, .d2l-twopanelselector-wrapper d2l-max-width d2l-min-width d2l-repsonsive-collapse-layout {
+    margin-left: 2% !important;
+    width: 68% !important;
+    max-width: 68% !important;
+}
+
+.d2l-page-main, .d2l-labs-navigation-centerer, .d2l-max-width {
+    max-width: none !important;
+    margin: 0 !important;
+    padding-left: var(--uw-sidebar-width) !important;
+}
+
+.d2l-labs-navigation-gutters {
+    width: 100% !important;
+}
+
+d2l-labs-navigation {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+d2l-labs-navigation-main-header, d2l-labs-navigation-main-footer {
+    padding-left: var(--uw-sidebar-width) !important;
+}
+
+.d2l-box {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.d2l-page-search, .d2l-twopanelselector-main-padding {
+    padding-top: 2rem !important;
+}
+
+/* ========================================================
+   UPCOMING DUE DATES SECTION (Directly below courses)
+   ======================================================== */
+
+   .uw-due-dates-section {
+    border-top: 1px solid #e2e8f0 !important;
+    margin-top: 6px !important;
+  }
+  
+  .uw-due-list {
+    padding: 4px 0 !important;
+  }
+  
+  .uw-due-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 14px !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #f8fafc !important;
+    transition: background-color 0.12s ease !important;
+  }
+  
+  .uw-due-item:hover {
+    background-color: #f1f5f9 !important;
+  }
+  
+  /* Date indicator badge */
+  .uw-due-badge {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 36px !important;
+    padding: 2px 4px !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .uw-due-badge-month {
+    font-size: 8.5px !important;
+    font-weight: 700 !important;
+    color: #0284c7 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+  }
+  
+  .uw-due-badge-day {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    line-height: 1.1 !important;
+  }
+  
+  /* Text metadata */
+  .uw-due-details {
+    flex: 1 !important;
+    overflow: hidden !important;
+  }
+  
+  .uw-due-title {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  .uw-due-meta {
+    font-size: 10.5px !important;
+    color: #64748b !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Hidden when sidebar collapses to mini-mode */
+  #uw-learn-sidebar.collapsed .uw-due-dates-section {
+    display: none !important;
+  }

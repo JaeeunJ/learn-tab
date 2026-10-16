@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "LEARN UI Sandbox",
+    "version": "1.0",
+    "description": "Custom UI layout experiment for learn.uwaterloo.ca",
+    "content_scripts": [
+      {
+        "matches": ["*://learn.uwaterloo.ca/*"],
+        "js": ["content.js"],
+        "css": ["styles.css"],
+        "run_at": "document_idle"
+      }
+    ]
+  }
